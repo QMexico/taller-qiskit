@@ -1,6 +1,6 @@
 # Curso Qiskit
 
-QMexico se enorgullese en presentar curso sobre Qiskit, el cual abarca los diferentes paquete que componen a este SDK, desde su versión 0.25.4
+QMexico se enorgullece en presentar su curso sobre Qiskit, el cual abarca los diferentes paquetes que componen a este SDK, desde su versión 0.25.4
 
 
 ## Contenido
