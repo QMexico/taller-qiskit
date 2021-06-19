@@ -1,0 +1,1 @@
+# Curso Qiskit## Qiskit Aer- Simuladores: QASM, Statevector Simulator, y Pulse Simulator- Acceso y visualización de los resultados de un experimento- Envío a dispositivos reales en la nube*- Experimentos sin ruido- Experimentos con ruido- Ruido personalizado- Importando modelos de ruido de un dispositivo real
