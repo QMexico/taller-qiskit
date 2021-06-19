@@ -1,0 +1,1 @@
+# Curso Qiskit## Qiskit Terra- Circuitos cuánticos- Compuertas unitarias- Compuertas de múltiples qubits y controladas- Visualización de estados, esfera de Bloch, Q-Sphere- Transpiler- Mapas de acoplamiento de dispositivos- Qiskit Pulse

@@ -1,0 +1,1 @@
+# Curso Qiskit## Qiskit Ignis- Caracterización de compuertas- Relajación y de-coherencia- Matriz de calibración- Técnicas de mitigación de errores
