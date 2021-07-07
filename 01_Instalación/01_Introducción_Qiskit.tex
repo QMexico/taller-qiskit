@@ -1,0 +1,566 @@
+%----------------------------------------------------------------------------
+%                        Librerias para usar
+%----------------------------------------------------------------------------
+\documentclass[spanish]{beamer}
+\usepackage{parskip}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}         % para caracteres de todo tipo
+\usepackage[spanish]{babel}         % para que coloque textos automáticos en español
+\usepackage{tikz}                   % para uso de imágenes
+\usetikzlibrary{quantikz}           % para dibujar circuitos
+\usepackage{braket}                 % para notación de Dirac
+\usepackage{hyperref}               % para personalizar links
+\usepackage{listings}               % para snippets de código
+ 
+%----------------------------------------------------------------------------
+%                Definiciones de colores personalizados
+%----------------------------------------------------------------------------
+
+% Colores QMexico
+\definecolor{QMexicoPurple}{RGB}{45, 30, 47}    % color morado del logo de QMexico
+\definecolor{QMexicoPurple2}{RGB}{66, 36, 70}   % color morado del logo de QMexico (versión 2 para contrastar)
+\definecolor{QMexicoYellow}{RGB}{253, 187, 65}  % color amarillo del logo de QMexico
+\definecolor{QMexicoPink}{RGB}{238, 42, 111}    % color rosa mexicano del logo de QMexico
+
+% Otros colores
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+%----------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+%            Personalización de los links dentro del documento
+%----------------------------------------------------------------------------
+
+\hypersetup{
+  colorlinks,              % indicar que se desea color en las links
+  allcolors=.,             % otras links con el color que ya tenían (dado por Beamer)
+  urlcolor=QMexicoPink,    % solo cambiar el color de las urls
+}
+
+%----------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+%            Personalización de los links dentro del documento
+%----------------------------------------------------------------------------
+
+\hypersetup{
+  colorlinks,              % indicar que se desea color en las links
+  allcolors=.,             % otras links con el color que ya tenían (dado por Beamer)
+  urlcolor=QMexicoPink,    % solo cambiar el color de las urls
+}
+
+%----------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+%                 Personalización de los snippet de código
+%----------------------------------------------------------------------------
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%----------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+%                        Imágenes con esquinas redondeadas
+%----------------------------------------------------------------------------
+
+\newsavebox{\picbox} % usar este comando si se desea que la imagen tenga esquinas redondeadas
+
+\newcommand{\cutpic}[3]{
+  \savebox{\picbox}{\includegraphics[width=#2]{#3}}
+  \tikz\node [draw, rounded corners=#1, line width=4pt,
+    color=white, minimum width=\wd\picbox,
+    minimum height=\ht\picbox, path picture={
+      \node at (path picture bounding box.center) {
+        \usebox{\picbox}};
+    }] {};}
+%----------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+%              Personalización de definiciones para Beamer
+%----------------------------------------------------------------------------
+
+\usetheme{Darmstadt}         % tema de Beamer
+\useinnertheme{circles}      % quita las bullets en 3D
+
+\setbeamercolor{palette primary}{bg=QMexicoPurple,fg=QMexicoYellow}
+\setbeamercolor{palette secondary}{bg=QMexicoPurple2,fg=white}
+%\setbeamercolor{palette tertiary}{bg=QMexicoPurple,fg=white}
+%\setbeamercolor{palette quaternary}{bg=QMexicoPurple,fg=white}
+\setbeamercolor{structure}{fg=QMexicoPurple} % itemize, enumerate, etc
+\setbeamercolor{section in toc}{fg=QMexicoPink} % TOC sections
+%\setbeamercolor{subsection in head/foot}{bg=QMexicoPurple,fg=white}
+
+%----------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+%                        Información del título
+%----------------------------------------------------------------------------
+
+\title[QMexico]  % opcional (dependiendo del tema de Beamer esto será mostrado o no)
+{Curso de Qiskit}   % esto si será mostrado
+
+\subtitle{Instalación e Introducción}  % por ejemplo: Qiskit Aer
+
+\author{Pablo González}  % sin son mas autores, usar "\and"
+
+\institute[QMexico]  % (opcional)
+
+\titlegraphic{\cutpic{0.25cm}{5cm}{QMexico-logo}}  % logo en página de título
+
+\date[Agosto 2021]  % (opcional)
+{Qiskit Summer Jam Mexico, Agosto 2021}
+
+\logo{\cutpic{0.2cm}{1cm}{QMexico-logo-short.png}}
+% logo en todas las slides
+
+%----------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+% Indicar que se debe colocar la tabla de contenido al comienzo de 
+% cada sección y resalta la sección que va a comenzar
+%----------------------------------------------------------------------------
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Tabla de Contenido}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%----------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+\begin{document}
+
+% Crear slide inicial (título)
+\frame[plain]{\titlepage}
+
+%----------------------------------------------------------------------------
+% Colocar la tabla de contenido al inicio de la presentación
+% pero después del título
+
+\begin{frame}
+\frametitle{Tabla de Contenido}
+\tableofcontents
+\end{frame}
+%----------------------------------------------------------------------------
+%                   PEQUEÑA INTRODUCCIÓN (MAS RESUMIDA Y PRECISA)
+%----------------------------------------------------------------------------
+\section{Introducción}   
+\newpage
+\setlength{\parskip}{5mm}
+\justify
+\begin{frame}
+\frametitle{Introducción}
+Tradicionalmente, nuestras computadoras han funcionado a base de unos y ceros para realizar la infinidad de maravillas y comodidades que estos han traído; pero con el paso del tiempo el hecho de  seguir usando un sistema que opera de esta manera representa una limitante en muchas tareas, ya que un bit solo puede ser 1 o 0. 
+
+En cambio, en la computación cuántica, intervienen las leyes de la mecánica cuántica, y la partícula puede estar en superposición coherente: puede ser 0, 1 y puede ser 1 y 0 a la vez (dos estados ortogonales de una partícula subatómica). Eso permite que se puedan realizar varias operaciones a la vez, según el número de cúbits. A más números de cúbits, mas exponencial es la potencia.
+\end{frame}
+%-----------------------------------------------------------------------------
+\newpage
+\setlength{\parskip}{5mm}
+\begin{frame}
+\frametitle{Introducción a la computación cuántica}
+Esta idea fue propuesta por Paul Benioff, quien expuso su teoría para aprovechar las leyes cuánticas en el entorno de la computación. En vez de trabajar a nivel de voltajes eléctricos, se trabaja a nivel de cuanto. 
+
+Dotando a las mismas de una alta velocidad con la que podrían acelerar el descubrimiento de nuevos medicamentos, descifrar los sistemas de seguridad criptográfica más complejos, diseñar nuevos materiales, modelar el cambio climático y sobrecargar la inteligencia artificial, según dicen los expertos en el área.
+\end{frame}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+%                   INTRODUCCIÓN A LA INSTALACIÓN
+%-----------------------------------------------------------------------------
+
+    %-----------------------------------------------------------------------------
+    %                   Instalar Anaconda para W,M y L
+    %-----------------------------------------------------------------------------
+\newpage\section{Instalación de Anaconda y Qiskit}
+\begin{frame}\frametitle{Anaconda}
+\setlength{\parskip}{5mm}\justify
+Una de las herramientas principales para este curso es el uso del lenguaje Python; se ha buscado simplificar mucho el uso de la programación para el área de la computación cuántica que ahora podemos simular la respuesta de un circuito cuántico con este lenguaje.
+
+Para ello vamos a necesitar el entorno de Anaconda, el cual nos provee de diferentes ambientes de programación para el uso de Qiskit. A continuación, una rápida guía para instalar Anaconda dependiendo de nuestro sistema operativo. Pedimos a los usuarios ir a la seccion 4 'Herramientas locales' para encontrar el link que los llevara al enlace de descarga.
+\end{frame}
+%-----------------------------------------------------------------------------
+\newpage\subsection{Instalación}
+\begin{frame}\frametitle{Anaconda dependiendo nuestro entorno}
+\setlength{\parskip}{5mm}\justify
+Antes de comenzar la descarga, recomendamos revisar el sistema operativo (S0 por sus siglas en ingles) de nuestro equipo. Una vez seguros del SO de nuestra computadora, y de la forma de instalación (recomendando las opciones graficas), descargamos el instalador correspondiente.
+
+\centering\includegraphics[width = 0.75\textwidth]{CON2.JPG}
+
+\end{frame}
+%-----------------------------------------------------------------------------
+\newpage
+\begin{frame}\frametitle{Anaconda en Windows}
+\setlength{\parskip}{5mm}\justify
+Para el caso de Windows, descargaremos el instalador correspondiente. Una vez se ha descargado, nos aparecerá la siguiente ventana. Tan solo necesitas leer las instrucciones del instalador hasta terminar. Hecho esto, tendremos Anaconda instalado.
+
+\centering\includegraphics[width = 0.5\textwidth]{CON3.JPG}
+
+\end{frame}
+%-----------------------------------------------------------------------------
+\newpage\subsection{Instalación en macOS}
+\begin{frame}\frametitle{Anaconda en macOS}
+\setlength{\parskip}{5mm}\justify
+El caso de macOS es un poco más sencillo que en Windows, tan solo basta con seleccionar la opción recomendada de instalador grafico (Graphical Installer) y seguir los pasos que nos dará el instalador. Este paso es recomendado para usuarios inexpertos pero el usuario es libre de usar el instalador por líneas de comando (Command Line).
+
+\centering\includegraphics[width = 0.5\textwidth]{CON4.JPG}
+
+\end{frame}
+%-----------------------------------------------------------------------------
+\newpage\subsection{Instalación en Linux}
+\begin{frame}\frametitle{Anaconda en Linux}
+\setlength{\parskip}{5mm}\justify
+Para instalar Anaconda se necesita descargar la opción recomendada (la cual es la primera de la lista de descargas) y posteriormente, realizar los siguientes pasos. 
+
+\centering\includegraphics[width = 0.5\textwidth]{CON5.JPG}
+
+\end{frame}
+%-----------------------------------------------------------------------------
+\newpage
+\begin{frame}[fragile]\frametitle{Anaconda en Linux}
+\setlength{\parskip}{5mm}\justify
+Accedemos a la terminal de nuestra computadora, tipiamos el siguiente comando y ejecutamos pulsando a Enter:
+\begin{lstlisting}[language=c++]
+bash ~/Downloads/Anaconda3-2020.07-Linux-x86_64.sh\end{lstlisting}
+
+Hecho esto, nos desplegara el siguiente mensaje, el cual es el acuerdo de licencia de Anaconda; para aceptarlo, tipiamos "yes"
+
+\centering\includegraphics[width = 0.75\textwidth]{CON6.JPG}
+
+\end{frame}
+%-----------------------------------------------------------------------------
+\newpage
+\begin{frame}[fragile]\frametitle{Anaconda en Linux}
+\setlength{\parskip}{5mm}\justify
+A continuación, nos dirá una ruta predeterminada para la instalación, recomendamos solo pulsar Enter para continuar con la descarga de complementos y paquetes, o especificar una ruta diferente. El proceso de descarga toma alrededor de 5 a 10 minutos en completarse, por lo que pedimos ser pacientes en este punto.
+
+\centering\includegraphics[width = 0.75\textwidth]{CON7.JPG}
+
+\end{frame}
+%-----------------------------------------------------------------------------
+\newpage
+\begin{frame}[fragile]\frametitle{Anaconda en Linux}
+\setlength{\parskip}{5mm}\justify
+Finalizado, cerramos y abrimos la terminal para tipiar 'jupyter notebook', para conocer la ruta de acceso hacia la carpeta de anaconda desde donde podrá ser ejecutada la aplicación, o tambien accesando como se muestra en la imagen, la cual es la opción recomendada, finalizando con la instalación.
+
+\centering\includegraphics[width = 0.75\textwidth]{CON8.JPG}
+
+\end{frame}
+
+%-----------------------------------------------------------------------------
+%                            INSTALACIÓN DE QISKIT
+%-----------------------------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Instalación de Qiskit}
+\justify\setlength{\parskip}{5mm}
+Para instalar Qiskit de manera local en nuestra computadora, basta con utilizar el nuevo entorno que hemos descargado, este procedimiento de instalación de Qiskit es el mismo para todos los sistemas operativos.
+
+Primero, nos interesa arrancar el nuevo entorno de Anaconda, para ello puedes utilizar el buscador en Windows o macOS tipiando 'anaconda3' para buscar el ejecutable y en Linux entrando mediante Jupyter Notebook.
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Instalación de Qiskit}
+\justify\setlength{\parskip}{5mm}
+Hecho esto, nos aparecerá un logo en nuestra pantalla hasta que nos aparezca el navegador de Anaconda, desde aquí podremos acceder a los múltiples ambientes de programación que hemos instalado. En este caso, nos interesa el terminal de Conda, el cual esta remarcado en la siguiente imagen.
+
+\centering\includegraphics[width = 0.75\textwidth]{CON1.JPG}
+
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Instalación de Qiskit}
+\justify\setlength{\parskip}{5mm}
+Una vez aquí, debemos crear un entorno virtual para poder preparar toda la paquetería y módulos de Qiskit; crear un entorno también nos es útil para crear un espacio independiente a tu instalación local, con el objetivo de aislar los recursos y librerías, con este concepto podemos tener distintos entornos virtuales con diferentes versiones de Python o de una librería concreta.
+
+Para crear nuestro ambiente, tipiamos el siguiente comando:
+\begin{lstlisting}[language=c++]
+conda create -n "Nombre de nuestro entorno" python=3\end{lstlisting}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Instalación de Qiskit}
+\justify\setlength{\parskip}{5mm}
+El siguiente paso es activar nuestro ambiente, por lo que debemos tipiar el siguiente comando:
+\begin{lstlisting}[language=c++]
+conda activate "Nombre de nuestro entorno" \end{lstlisting}
+
+Posterior a eso, nos deben salir varias instrucciones que lo que están haciendo es activar nuestro entorno, este proceso toma al rededor entre 3 y 5 minutos. Hecho esto, nuestro entorno está listo para instalar Qiskit con la siguiente instrucción:
+\begin{lstlisting}[language=c++]
+pip install qiskit \end{lstlisting}
+Ahora solo queda esperar a terminar la instalación.
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Instalación de Qiskit}
+\justify\setlength{\parskip}{5mm}
+Transcurrido un tiempo de aproximadamente 3 minutos, Qiskit estará instalado en nuestro ambiente de Anaconda, pero lo que nos falta es un soporte visual para los Jupyter Notebooks con el siguiente comando:
+\begin{lstlisting}[language=c++]
+pip install qiskit[visualization] \end{lstlisting}
+
+Para usuarios macOS, es recomendado usar este comando:
+\begin{lstlisting}[language=c++]
+pip install 'qiskit[visualization]'\end{lstlisting}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Instalación de Qiskit}
+\justify\setlength{\parskip}{5mm}
+Para este curso es necesario tener las siguientes versiones de Qiskit:
+
+\centering \includegraphics[width = 0.5\textwidth]{CMD10.JPG}
+
+Pudiendo ser comprobado por medio del siguiente comando:
+\begin{lstlisting}[language=c++]
+conda list\end{lstlisting}
+ o con:
+\begin{lstlisting}[language=c++]
+pip list\end{lstlisting}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Instalación de complementos}
+\justify\setlength{\parskip}{5mm}
+En este curso vamos a necesitar librerías extras que no vienen por defecto al instalar Qiskit mediante los pasos anteriores. Para ello necesitamos tipiar los siguientes comandos:
+\begin{lstlisting}[language=c++]
+pip install qiskit-finance
+pip install qiskit-optimization
+pip install qiskit-nature
+pip install qiskit-machine-learning\end{lstlisting}
+Recordando tipiar uno por uno.
+\end{frame}
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
+%                  COMIENZO DE LA INTRODUCCIÓN A QISKIT
+%-----------------------------------------------------------------------------
+\section{Introducción a Qiskit}\subsection{Librerías en Python}
+\justify\setlength{\parskip}{5mm}
+\begin{frame}\frametitle{Librerías en Python} 
+
+Ahora que hemos instalado el paquete Qiskit en nuestro sistema, podemos empezar a escribir un pequeño código para empezar a comprender las configuraciones básicas de los sistemas de simulación de una computadora cuántica.
+
+Pero antes de comenzar tratar código, vamos a darle una pequeña revisión a lo que es Qiskit, su uso y básicamente ¿qué es Qiskit? [kiss-kit] es un SDK (Software Development Kit) de código abierto para trabajar con computadoras cuánticas a nivel de pulsos, circuitos y módulos de aplicación. Lo que logra acelerar el desarrollo de aplicaciones cuánticas aportando toda una gama de herramientas para muchas aplicaciones distintas pero con la gran ventaja de eliminar por completo el ruido captado por un ordenador cuántico, dejando el resultado puro.
+
+\end{frame} 
+\begin{frame}
+\frametitle{Librerías en Python} 
+Para lograr dicho cometido, Qiskit cuenta con una lista de simuladores que podremos llamar para realizar pruebas a nuestros circuitos, obteniendo con ello diferentes métodos para trabajar, resultados y comportamientos que son parte del funcionamiento de cada simulador. Como ejemplo serian Aer, Aqua, Terra, entre otros que serán abarcados a lo largo de este curso.
+
+Para esta introducción estaremos manejando los simuladores de Aer mediante la IDE de PyCharm, la cual es la recomendada para trabajar esta parte del curso aunque si se desea usar otra IDE es perfectamente válido.
+
+\end{frame} 
+
+\begin{frame}
+\frametitle{Librerías en Python} 
+Para empezar a trabajar los circuitos cuánticos con Qiskit, deberemos llamar a las librerías con las que realizaremos nuestro primer circuito cuántico, para ello debemos definir lo siguiente en nuestra IDE.
+
+ \includegraphics[width = \textwidth]{Diapositiva12.JPG}
+ \end{frame} 
+ \begin{itemize}
+ \begin{frame}
+ \frametitle{Elementos en Qiskit} 
+     \item\textbf{1.- Modulo Qiskit:} 
+     Es el modulo principal donde se alojan todas las herramientas con las que podemos disponer para realizar nuestras simulaciones.
+     
+     \item\textbf{2.- Librería de registros cuánticos:}
+     Es la libreria con la que podemos agregar los cúbits que necesitemos para nuestro trabajo, a partir de aqui podremos cambiarlos de signo, rotarlos, entre muchas otras acciones hasta cambiar las magnitudes de su estado.
+     
+     \item\textbf{3.- Librería de registros clásicos:}
+     Para poder revisar el comportamiento de nuestros qbits necesitaremos una forma de medir su estado, la mejor manera es utilizando bits clásicos (0 o 1) y con esta librería podremos agregar los circuitos cuánticos.
+   \end{frame} 
+   \begin{frame}
+   \frametitle{Elementos en Qiskit} 
+     \item\textbf{4.- Librería de circuitos cuánticos:}
+    Es la librería con la que podemos agregar los circuitos cuánticos que necesitemos en nuestro trabajo a partir de los cúbits o bits clásicos registrados con anterioridad.
+     
+     \item\textbf{5.- Librería ejecuciones:}
+    Con esta librería podremos realizar los trabajos de simulación seleccionando nuestros 'disparos' o 'shots' , el simulador para conseguir los resultados, entre otras cosas más.
+     
+     \item\textbf{6.- Librería del simulador:}
+     Básicamente, son las características con las que ejecutaremos así como otras cosas con las que podemos dotar a nuestro circuito como un tipo de ruido que tenga nuestro sistema.
+      \end{frame} 
+    \end{itemize}
+ \begin{frame}
+ \frametitle{Elementos en Qiskit}    
+Cabe resaltar, que el estudiante siempre revise los elementos con los que estará trabajando en el circuito que desee diseñar, mediante el uso de la documentación oficial de Qiskit (\url{https://qiskit.org/}). Ahora, ya hemos comenzado a utilizar las librerías con las que crearemos nuestro circuito, ahora utilizaremos estas librerías para utilizar sus elementos.
+ \end{frame}
+ 
+\newpage\subsection{Compuertas cuánticas}\justify
+\begin{frame}
+\frametitle{Compuertas cuánticas}
+La herramienta de Qiskit nos abre la puerta a las compuertas de Pauli, deben su nombre a Wolfgang Ernst Pauli, son matrices usadas en física cuántica en el contexto del momento angular intrínseco o espín. Matemáticamente, las matrices de Pauli constituyen una base vectorial del álgebra de Lie del grupo especial unitario SU (2), actuando sobre la representación de dimensión 2.
+\end{frame}
+
+\newpage\justify
+\begin{frame}
+\frametitle{Compuertas cuánticas}
+Puesto que se basan en el momento del espin, la representación típica de estas son las siguientes:
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{equation}
+X=\begin{pmatrix}
+        0 & 1\\
+        1 & 0
+        \end{pmatrix}
+    \end{equation}
+    
+\column{0.5\textwidth}
+\begin{equation}
+Y=\begin{pmatrix}
+        0 & -i\\
+        i & 0
+        \end{pmatrix}
+    \end{equation}
+\end{columns}
+
+\begin{equation}
+Z=\begin{pmatrix}
+        1 & 0\\
+        0 & -1
+        \end{pmatrix}
+    \end{equation}
+\end{frame}
+
+\newpage\justify
+\begin{frame}
+\frametitle{Compuertas cuánticas}
+
+Analogamente a esto, podemos conocer la posición del espin:
+
+\centering\displaystyle \left\{|\uparrow \rangle =(1,0);|\downarrow \rangle =(0,1)\right\}
+\justify
+La alteración del estado del espín se realiza mediante las compuertas cuánticas que realizan operaciones como rotaciones, inversiones, filtros, entre otras operaciones más mediante el leguaje de programación de Pyhton.
+\end{frame}
+
+\newpage\justify
+\begin{frame}\subsection{Resultados y visualización}
+\frametitle{Resultados y visualización}
+Qiskit nos ofrece una gama de simuladores y formas de visualizar de representar nuestros circuitos cuánticos. La primera opción nos ofrece varias formas de obtener resultados de maneras diferentes, ya sea por medio de shots o disparos de los resultados, o por la posición final de los vectores de los espines.
+\end{frame}
+
+\newpage\justify
+\begin{frame}
+\frametitle{Resultados y visualización}
+Además de esto, nos ofrece formas de ver nuestros circuitos desde una forma muy sencilla hasta formas más complejas y visualmente atractivas. Ejemplo:
+
+\centering\includegraphics[width = 0.5\textwidth]{ascii.JPG}
+\end{frame}
+
+\newpage\justify
+\begin{frame}
+\frametitle{Resultados y visualización}
+Incluso podemos utilizar una forma de representar la posición final de los cúbits mediante el uso de la esfera de Bloch en una representación tridimensional.
+
+\centering\includegraphics[width = 0.5\textwidth]{bloch.JPG}
+\end{frame}
+%-----------------------------------------------------------------
+\section{Herramientas locales}        
+ \setlength{\parskip}{1mm}
+ \begin{frame}[fragile]
+ \frametitle{Conda} 
+ \justify 
+La ventaja que tenemos al trabajar con Qiskit es poder maniobrarlo ya sea en la nube o de manera local, esto nos da la posibilidad de trabajar incluso sin conexión, por lo que pedimos a los nuevos usuarios pasarse por este link para instalar Conda en su última versión.
+ 
+\url{https://conda.io/projects/conda/en/latest/user-guide/install/index.html} 
+\end{frame}
+
+       
+ \newpage\setlength{\parskip}{1mm}
+ \begin{frame}[fragile]
+ \frametitle{Jupyter Notebook} 
+ \justify 
+ Para ejecutar nuestros proyectos tenemos variadas opciones pero nuestra principal herramienta serán los notebooks (de Jupyter Notebooks) seleccionando ya sea en la imagen que ven en pantalla.
+\centering\includegraphics[width = 0.75\textwidth]{CONDA.jpg}
+\end{frame}
+
+ \newpage\setlength{\parskip}{1mm}
+ \begin{frame}[fragile]
+ \frametitle{Jupyter Notebook} 
+ \justify 
+Esto nos permite crear y revisar notebooks de Python en Jupyter compilando por medio de internet, pero también gracias a Conda podemos acceder de manera local para crear nuestros programas sin necesidad de entrar a internet como lo son las IDEs de PyCharm y Spyder. Tan solo requiriendo hacer clic como en el ejemplo anterior.
+\end{frame}
+
+\section{Herramientas en la nube}        
+ \setlength{\parskip}{1mm}
+ \begin{frame}[fragile]
+ \frametitle{IBM Quantum Experience} 
+ \justify    
+ Incluso con todo lo anterior, si necesitamos más herramientas para trabajar en computación cuántica o requerimos aplicaciones donde la computación cuántica es una herramienta fundamental, tenemos en la nube diferentes opciones para trabajar de manera gratuita con la computación cuántica. Nuevamente, son simuladores de alta precisión debido al ruido que estas máquinas llegan a capturar.
+ 
+ Ejemplo de esto es la IBM Quantum Experience donde podremos trabajar en tiempo real con una de las múltiples computadoras cuánticas que nos ofrece la compañía. Aprendamos un poco como seleccionar un buen modelo para empezar a trabajar y conocer el ambiente.
+ 
+ Para acceder a la herramienta, hay que dirigirnos a esta página:  \url{https://quantum-computing.ibm.com/}
+
+ \end{frame}
+ 
+ \newpage\begin{frame}
+ \frametitle{IBM Quantum Experience} 
+ \justify 
+Entrando al link anterior, nos encontraremos esta página de bienvenida donde podemos interactuar par conocer un poco más sobre la forma de trabajar de la mano de IBM. Para registrarnos, debemos hacer click en el botón azul que dice IBMid.
+ 
+ \centering\includegraphics[width = 1\textwidth]{Diapositiva1.JPG}
+ \end{frame}
+ 
+ \newpage\begin{frame}
+ \frametitle{IBM Quantum Experience} 
+ \justify 
+ Una vez entrando, nos pedirá nuestros datos personales para poder pasar a aceptar un acuerdo de uso con la herramienta virtual de IBM, asegurarse de leer completamente el acuerdo de uso. Una vez hecho esto, podemos dar en el botón azul y seguir con la aplicación.
+ 
+ \centering\includegraphics[width = 0.8\textwidth]{Diapositiva2.JPG}
+ \end{frame}
+ 
+ \newpage\justify \begin{frame}
+ \frametitle{IBM Quantum Experience} 
+ Avanzaremos hasta lo que es nuestra página de inicio de sesión de usuario, en esta se encuentran diferentes opciones como el laboratorio de IBM para escribir código, el simulador de una computadora cuántica y varias opciones más, lo que hoy nos llama es entrar a la parte del Composer, el cual es el botón azul que dice "Lauch Composer".
+ 
+ \centering\includegraphics[width = 0.75\textwidth]{Diapositiva3.JPG}
+ \end{frame}
+ 
+  \newpage\justify \begin{frame}
+ \frametitle{IBM Quantum Experience} 
+En esta parte podemos disfrutar de una herramienta muy completa para desarrollar circuitos cuánticos, conozcamos un poco más nuestro ambiente. 
+ 
+ \centering\includegraphics[width = 0.90\textwidth]{Diapositiva4.JPG}
+ \end{frame}
+ 
+  \newpage\justify \begin{frame}
+ \frametitle{IBM Quantum Experience} 
+ Primero que nada, tenemos nuestro diseñador de circuitos cuánticos, junto a todas las compuertas cuánticas que podremos llegar necesitar, desde las más básicas hasta las más complicadas.
+ 
+ \centering\includegraphics[width = 0.90\textwidth]{Diapositiva5.JPG}
+ \end{frame}
+ 
+  \newpage\justify \begin{frame}
+ \frametitle{IBM Quantum Experience} 
+ Segundo, cuando terminemos de diseñar nuestro circuito y queramos ver los resultados en forma gráfica y de porcentajes de que ocurran, tenemos esta útil grafica que nos facilita el trabajo.
+ 
+ \centering\includegraphics[width = 0.75\textwidth]{Diapositiva6.JPG}
+ \end{frame}
+ 
+  \newpage\justify \begin{frame}
+ \frametitle{IBM Quantum Experience} 
+ Tercero, nuestra esfera de Bloch móvil donde podemos ver la dirección de nuestros vectores en tiempo real, logrando intercalar entre estado y ángulo de fase.
+ 
+ \centering\includegraphics[width = 0.75\textwidth]{Diapositiva7.JPG}
+ \end{frame}
+ 
+ \newpage\justify \begin{frame}
+ \frametitle{IBM Quantum Experience} 
+Cuarto y último, si preferimos probar la entrada por código tenemos una sencilla interfaz para el trabajo, con disponibilidad para usar el lenguaje OpenQASM 2.0 o una versión de Python con Qiskit.
+ 
+ \centering\includegraphics[width = 0.75\textwidth]{Diapositiva8.JPG}
+ \end{frame}
+ 
+\end{document}
