@@ -13,7 +13,7 @@
   - Acceso a servicios y dispositivos de IBM
 
 
-- Qiskit Terra:
+- Qiskit Terra
   - Circuitos cuánticos
   - Compuertas cuánticas
   - Compuertas controladas y de múltiples qubits
@@ -28,8 +28,8 @@
   - Enviar a un dispositivo cuántico real
   - Experimentos sin ruido
   - Experimentos con ruido
-   - Ruido personalizado
-   - Importar modelos de ruido de un dispositivo real
+     - Ruido personalizado
+     - Importar modelos de ruido de un dispositivo real
 
 - Qiskit Ignis
   - Caracterización de compuertas
