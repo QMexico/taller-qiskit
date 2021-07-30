@@ -359,9 +359,9 @@ Recordando tipear uno por uno.
 %-----------------------------------------------------------------------------
 %                  COMIENZO DE LA INTRODUCCIÓN A QISKIT
 %-----------------------------------------------------------------------------
-\section{Introducción a Qiskit}\subsection{Librerías en Python}
+\section{Introducción a Qiskit}\subsection{Simuladores de Qiskit}
 \justify\setlength{\parskip}{5mm}
-\begin{frame}\frametitle{Librerías en Python} 
+\begin{frame}\frametitle{Qiskit} 
 
 Ahora que hemos instalado el paquete Qiskit en nuestro sistema, podemos empezar a escribir un pequeño código para empezar a comprender las configuraciones básicas de los sistemas de simulación de una computadora cuántica.
 
@@ -369,53 +369,49 @@ Pero antes de comenzar tratar código, vamos a darle una pequeña revisión a lo
 \end{frame} 
 
 \newpage\justify\setlength{\parskip}{5mm}
-\begin{frame}\frametitle{Librerías en Python} 
+\begin{frame}\frametitle{Qiskit} 
 Lo que logra acelerar el desarrollo de aplicaciones cuánticas aportando toda una gama de herramientas para muchas aplicaciones distintas pero con la gran ventaja de eliminar por completo el ruido captado por un ordenador cuántico, dejando el resultado puro.
 \end{frame} 
 
 \newpage\justify\setlength{\parskip}{5mm}
-\begin{frame}\frametitle{Librerías en Python} 
+\begin{frame}\frametitle{Simuladores de Qiskit} 
 Para lograr dicho cometido, Qiskit cuenta con una lista de simuladores que podremos llamar para realizar pruebas a nuestros circuitos, obteniendo con ello diferentes métodos para trabajar, resultados y comportamientos que son parte del funcionamiento de cada simulador. 
 \end{frame} 
 
 \newpage\justify\setlength{\parskip}{5mm}
-\begin{frame}\frametitle{Librerías en Python} 
-Como ejemplo serian Aer, Aqua, Terra, entre otros que serán abarcados a lo largo de este taller.Para esta introducción estaremos manejando los simuladores de Aer mediante la IDE de PyCharm o por medio de los Jupyter Notebooks, los cuales son los recomendados para este taller.
-
+\begin{frame}\frametitle{Simuladores de Qiskit} 
+Como ejemplo serian Aer, Aqua, Terra, entre otros que serán abarcados a lo largo de este taller.pero ¿que contiene cada simulador? ¡vamos a descubrirlo!.
+\begin{itemsize}
+\item Qiskit (Terra)
+    \item Qiskit Simulator(Aer)
+    \item Qiskit Experiments (Ignis)
+    \item Qiskit Application Modules (Aqua)
+    \item Qiskit IBM Quantum (Provider)
+\end{itemsize}
 \end{frame} 
 
-\begin{frame}
-\frametitle{Librerías en Python} 
-Para empezar a trabajar los circuitos cuánticos con Qiskit, deberemos llamar a las librerías con las que realizaremos nuestro primer circuito cuántico, para ello debemos definir lo siguiente en nuestra IDE.
+\newpage\justify\setlength{\parskip}{5mm}
+\begin{frame}\frametitle{Terra y Aer} 
+En estos dos simuladores se encuentran las herramientas basicas para Qiskit, tales como registrar qubits y bits clasicos, crear circuitos con ellos, utilizar modelos de ruido, ver circuitos cuanticos funcionando, entre muchas aplicaciones mas.
+\end{frame} 
 
- \includegraphics[width = \textwidth]{Diapositiva12.JPG}
- \end{frame} 
- \begin{itemize}
- \begin{frame}
- \frametitle{Elementos en Qiskit} 
-     \item\textbf{1.- Modulo Qiskit:} 
-     Es el modulo principal donde se alojan todas las herramientas con las que podemos disponer para realizar nuestras simulaciones.
-     
-     \item\textbf{2.- Librería de registros cuánticos:}
-     Es la libreria con la que podemos agregar los cúbits que necesitemos para nuestro trabajo, a partir de aqui podremos cambiarlos de signo, rotarlos, entre muchas otras acciones hasta cambiar las magnitudes de su estado.
-     
-     \item\textbf{3.- Librería de registros clásicos:}
-     Para poder revisar el comportamiento de nuestros qbits necesitaremos una forma de medir su estado, la mejor manera es utilizando bits clásicos (0 o 1) y con esta librería podremos agregar los circuitos cuánticos.
-   \end{frame} 
-   \begin{frame}
-   \frametitle{Elementos en Qiskit} 
-     \item\textbf{4.- Librería de circuitos cuánticos:}
-    Es la librería con la que podemos agregar los circuitos cuánticos que necesitemos en nuestro trabajo a partir de los qubits o bits clásicos registrados con anterioridad.
-     
-     \item\textbf{5.- Librería ejecuciones:}
-    Con esta librería podremos realizar los trabajos de simulación seleccionando nuestros 'disparos' o 'shots' , el simulador para conseguir los resultados, entre otras cosas más.
-     
-     \item\textbf{6.- Librería del simulador:}
-     Básicamente, son las características con las que ejecutaremos así como otras cosas con las que podemos dotar a nuestro circuito como un tipo de ruido que tenga nuestro sistema.
-      \end{frame} 
-    \end{itemize}
- \begin{frame}
- \frametitle{Elementos en Qiskit}    
+\newpage\justify\setlength{\parskip}{5mm}
+\begin{frame}\frametitle{Ignis} 
+Aqui podemos desplegar una gama mas amplia de herramientas destinadas a las pruebas y experimentación, donde hay algoritmos que nos permiten realizar pruebas con valores aleatorios, mediciones y calibraciones de los circuitos, discriminadores  asi como herramientas para observar el comportamiento de nuestro sistema.
+\end{frame} 
+
+\newpage\justify\setlength{\parskip}{5mm}
+\begin{frame}\frametitle{Aqua} 
+Esta es una de las mas importantes puesto que podremos encontrar recursos para experimentar con temas de quimica, finanzas e incluso machine learning (en este caso, quantum machine learnig) asi como librerias para la optimización de recursos.
+\end{frame} 
+
+\newpage\justify\setlength{\parskip}{5mm}
+\begin{frame}\frametitle{Provider} 
+Este se comporta como un servicio para realizar simulaciones y el trabajo de ordenar la información como si de una computadora cuantica de IBM se tratase, buscando obtener la misma precisión.
+\end{frame} 
+
+\newpage\justify\setlength{\parskip}{5mm}
+\begin{frame}\frametitle{Elementos en Qiskit}    
 Cabe resaltar, que el estudiante siempre revise los elementos con los que estará trabajando en el circuito que desee diseñar, mediante el uso de la documentación oficial de Qiskit (\url{https://qiskit.org/}). Ahora, ya hemos comenzado a utilizar las librerías con las que crearemos nuestro circuito, ahora utilizaremos estas librerías para utilizar sus elementos.
  \end{frame}
  
