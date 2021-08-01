@@ -217,7 +217,7 @@ Para ello vamos a necesitar el entorno de Anaconda, el cual nos provee de difere
 \newpage\subsection{Instalación en Windows}
 \begin{frame}\frametitle{Anaconda dependiendo nuestro entorno}
 \setlength{\parskip}{5mm}\justify
-Antes de comenzar la descarga, recomendamos revisar el sistema operativo (S0 por sus siglas en ingles) de nuestro equipo. Una vez seguros del SO de nuestra computadora, y de la forma de instalación (recomendando las opciones graficas), descargamos el instalador correspondiente.
+Antes de comenzar la descarga, recomendamos revisar el sistema operativo ( Abreviado a SO por sus siglas en inglés) de nuestro equipo. Una vez seguros del SO de nuestra computadora, y de la forma de instalación (recomendando las opciones gráficas), descargamos el instalador correspondiente.
 
 \centering\includegraphics[width = 0.75\textwidth]{CON2.JPG}
 
@@ -235,7 +235,7 @@ Para el caso de Windows, descargaremos el instalador correspondiente. Una vez se
 \newpage\subsection{Instalación en macOS}
 \begin{frame}\frametitle{Anaconda en macOS}
 \setlength{\parskip}{5mm}\justify
-El caso de macOS es un poco más sencillo que en Windows, tan solo basta con seleccionar la opción recomendada de instalador grafico (Graphical Installer) y seguir los pasos que nos dará el instalador. Este paso es recomendado para usuarios inexpertos pero el usuario es libre de usar el instalador por líneas de comando (Command Line).
+El caso de macOS es un poco más sencillo que en Windows, tan solo basta con seleccionar la opción recomendada de instalador gráfico (Graphical Installer) y seguir los pasos que nos dará el instalador. Este paso es recomendado para usuarios inexpertos pero el usuario es libre de usar el instalador por líneas de comando (Command Line).
 
 \centering\includegraphics[width = 0.5\textwidth]{CON4.JPG}
 
@@ -257,7 +257,7 @@ Accedemos a la terminal de nuestra computadora, tipeamos el siguiente comando y 
 \begin{lstlisting}[language=c++]
 bash ~/Downloads/Anaconda3-2020.07-Linux-x86_64.sh\end{lstlisting}
 
-Hecho esto, nos desplegara el siguiente mensaje, el cual es el acuerdo de licencia de Anaconda; para aceptarlo, tipeamos "yes"
+Hecho esto, nos desplegara el siguiente mensaje, el cual es el acuerdo de licencia de Anaconda; para aceptarlo, tipeamos 'yes'
 
 \centering\includegraphics[width = 0.75\textwidth]{CON6.JPG}
 
@@ -347,7 +347,7 @@ pip list\end{lstlisting}
 %-----------------------------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Instalación de complementos}
 \justify\setlength{\parskip}{5mm}
-En este curso vamos a necesitar librerías extras que no vienen por defecto al instalar Qiskit mediante los pasos anteriores. Para ello necesitamos tipiar los siguientes comandos:
+En este curso vamos a necesitar librerías extras que no vienen por defecto al instalar Qiskit mediante los pasos anteriores. Para ello necesitamos tipear los siguientes comandos:
 \begin{lstlisting}[language=c++]
 pip install qiskit-finance
 pip install qiskit-optimization
@@ -365,12 +365,12 @@ Recordando tipear uno por uno.
 
 Ahora que hemos instalado el paquete Qiskit en nuestro sistema, podemos empezar a escribir un pequeño código para empezar a comprender las configuraciones básicas de los sistemas de simulación de una computadora cuántica.
 
-Pero antes de comenzar tratar código, vamos a darle una pequeña revisión a lo que es Qiskit, su uso y básicamente ¿qué es Qiskit? [kiss-kit] es un SDK (Software Development Kit) de código abierto para trabajar con computadoras cuánticas a nivel de pulsos, circuitos y módulos de aplicación. 
+Pero antes de comenzar a tratar con código, vamos a darle una pequeña revisión a lo que es Qiskit, su uso y básicamente ¿qué es Qiskit? [kiss-kit] es un SDK (Software Development Kit) de código abierto para trabajar con computadoras cuánticas a nivel de pulsos, circuitos y módulos de aplicación. 
 \end{frame} 
 
 \newpage\justify\setlength{\parskip}{5mm}
 \begin{frame}\frametitle{Qiskit} 
-Lo que logra acelerar el desarrollo de aplicaciones cuánticas aportando toda una gama de herramientas para muchas aplicaciones distintas pero con la gran ventaja de eliminar por completo el ruido captado por un ordenador cuántico, dejando el resultado puro.
+Lo que logra acelerar el desarrollo de aplicaciones cuánticas aportando toda una gama de herramientas para muchas aplicaciones distintas pero con la gran ventaja de poder ejecutar simulaciones con las cuales no nos preocupamos del ruido de una computadora cuántica, enfocándonos en el resultado
 \end{frame} 
 
 \newpage\justify\setlength{\parskip}{5mm}
@@ -380,7 +380,7 @@ Para lograr dicho cometido, Qiskit cuenta con una lista de simuladores que podre
 
 \newpage\justify\setlength{\parskip}{5mm}
 \begin{frame}\frametitle{Simuladores de Qiskit} 
-Como ejemplo serian Aer, Aqua, Terra, entre otros que serán abarcados a lo largo de este taller, pero ¿que contiene cada simulador? ¡Vamos a descubrirlo!
+Como ejemplo serían Aer, Aqua, Terra, entre otros que serán abarcados a lo largo de este taller, pero ¿que contiene cada simulador? ¡Vamos a descubrirlo!
 \begin{itemsize}
 \item Qiskit (Terra)
     \item Qiskit Simulator(Aer)
@@ -460,13 +460,13 @@ Analogamente a esto, podemos conocer la posición del espin:
 
 \centering\displaystyle \left\{|\uparrow \rangle =(1,0);|\downarrow \rangle =(0,1)\right\}
 \justify
-La alteración del estado del espín se realiza mediante las compuertas cuánticas que realizan operaciones como rotaciones, inversiones, filtros, entre otras operaciones más mediante el leguaje de programación de Pyhton.
+La alteración del estado del espín se realiza mediante las compuertas cuánticas que realizan operaciones como rotaciones, inversiones, filtros, entre otras operaciones más mediante el leguaje de programación Pyhton.
 \end{frame}
 
 \newpage\justify
 \begin{frame}\subsection{Resultados y visualización}
 \frametitle{Resultados y visualización}
-Qiskit nos ofrece una gama de simuladores y formas de visualizar de representar nuestros circuitos cuánticos. La primera opción nos ofrece varias formas de obtener resultados de maneras diferentes, ya sea por medio de shots o disparos de los resultados, o por la posición final de los vectores de los espines.
+Qiskit nos ofrece una gama de simuladores además de visualizar y representar nuestros circuitos cuánticos. La primera opción nos ofrece varias formas de obtener resultados de maneras diferentes, ya sea por medio de shots o disparos de los resultados, o por la posición final de los vectores de los espines.
 \end{frame}
 
 \newpage\justify
@@ -492,7 +492,7 @@ Incluso podemos utilizar una forma de representar la posición final de los cúb
  \justify 
 La ventaja que tenemos al trabajar con Qiskit es poder maniobrarlo ya sea en la nube o de manera local, esto nos da la posibilidad de trabajar incluso sin conexión, por lo que pedimos a los nuevos usuarios pasarse por este link para instalar Conda en su última versión.
  
-\url{https://conda.io/projects/conda/en/latest/user-guide/install/index.html} 
+\href{https://conda.io/projects/conda/en/latest/user-guide/install/index.html}{\textcolor{QMexicoPink}{Ir a link de descarga}}
 \end{frame}
 
        
@@ -500,7 +500,7 @@ La ventaja que tenemos al trabajar con Qiskit es poder maniobrarlo ya sea en la 
  \begin{frame}[fragile]
  \frametitle{Jupyter Notebook} 
  \justify 
- Para ejecutar nuestros proyectos tenemos variadas opciones pero nuestra principal herramienta serán los notebooks (de Jupyter Notebooks) seleccionando ya sea en la imagen que ven en pantalla.
+ Para ejecutar nuestros proyectos tenemos variadas opciones pero nuestra principal herramienta serán los notebooks (de Jupyter Notebooks) seleccionando la imagen que ven en pantalla.
 \centering\includegraphics[width = 0.75\textwidth]{CONDA.jpg}
 \end{frame}
 
@@ -508,7 +508,7 @@ La ventaja que tenemos al trabajar con Qiskit es poder maniobrarlo ya sea en la 
  \begin{frame}[fragile]
  \frametitle{Jupyter Notebook} 
  \justify 
-Esto nos permite crear y revisar notebooks de Python en Jupyter compilando por medio de internet, pero también gracias a Conda podemos acceder de manera local para crear nuestros programas sin necesidad de entrar a internet como lo son las IDEs de PyCharm y Spyder. Tan solo requiriendo hacer clic como en el ejemplo anterior.
+Esto nos permite crear y revisar notebooks de Python en Jupyter compilando por medio de internet, pero también gracias a Conda podemos acceder de manera local para crear nuestros programas sin necesidad de entrar a internet como lo son los IDEs de PyCharm y Spyder. Tan solo requiriendo hacer clic como en el ejemplo anterior.
 \end{frame}
 
 \section{Herramientas en la nube}        
@@ -597,7 +597,7 @@ Qiskit es una herramienta muy completa y bien documentada para su uso cuya prese
 
 \end{frame}
 %-------------------------BIBLIOS-------------------------------
-\section{Bibliografías}\setlength{\parskip}{1mm}
+\section{Referencias}\setlength{\parskip}{1mm}
 \begin{frame}[fragile]\frametitle{Bibliografías}\justify 
 Bernhardt, C. (2019). Quantum Computing For Everyone. 
 
