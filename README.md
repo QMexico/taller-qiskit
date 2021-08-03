@@ -38,7 +38,7 @@
   - Técnicas de mitigación de errores
 
 - Paquetes para aplicaciones
-  - qiskit-finance
-  - qiskit-optimization
-  - qiskit-nature
-  - qiskit-machine-learning
+  - Qiskit Optimization
+  - Qiskit Finance
+  - Qiskit Nature
+  - Qiskit Machine Learning
